@@ -22,6 +22,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import ".././node_modules/nprogress/nprogress.css";
+import React from "react";
 
 Router.onRouteChangeStart = (url) => NProgress.start();
 Router.onRouteChangeComplete = (url) => NProgress.done();
@@ -50,90 +51,110 @@ class Header extends Component {
     return (
       <React.Fragment>
         {/* for mobile menu start */}
-        <div className="d-bock d-md-block d-xl-none d-lg-none">
-          <div style={{ height: "100%" }}>
-            <Tolbar drawerClickHandler={this.drawerToggleClickHandler} />
-            <SideDrawer show={this.state.sideDraerOpen} />
-            {backdrop}
-            <main style={{ marginTop: "64px" }}></main>
+        <React.Fragment>
+          <div className="d-bock d-md-block d-xl-none d-lg-none">
+            <div style={{ height: "100%" }}>
+              <Tolbar drawerClickHandler={this.drawerToggleClickHandler} />
+              <SideDrawer show={this.state.sideDraerOpen} />
+              {backdrop}
+              <main style={{ marginTop: "64px" }}></main>
+            </div>
           </div>
-        </div>
+        </React.Fragment>
         {/* for mobile menu end  */}
 
-        <Navbar
-          color="light"
-          light
-          expand="md"
-          style={{ fontWeight: "bold", borderBottom: "1px solid #0069D9" }}
-        >
-          <Link href="/">
-            <NavLink className="font-weight-bold">{APP_NAME}</NavLink>
-          </Link>
-
+        <React.Fragment>
           <div className="d-none d-lg-block ml-auto d-xl-block d-md-none mt-1 mb-1">
-            <Collapse navbar>
-              <Nav className="ml-auto" navbar>
-                <React.Fragment>
-                  <NavItem>
-                    <Link href="/blogs">
-                      <NavLink>Blogs</NavLink>
-                    </Link>
-                  </NavItem>
-                </React.Fragment>
+            <Navbar
+              color="light"
+              light
+              expand="md"
+              style={{ fontWeight: "bold", borderBottom: "1px solid #0069D9" }}
+            >
+              <Link href="/">
+                <NavLink className="font-weight-bold">{APP_NAME}</NavLink>
+              </Link>
 
-                {!isAuth() && (
-                  <React.Fragment>
-                    <NavItem>
-                      <Link href="/signin">
-                        <NavLink>Signin</NavLink>
-                      </Link>
-                    </NavItem>
-                    <NavItem>
-                      <Link href="/signup">
-                        <NavLink>Signup</NavLink>
-                      </Link>
-                    </NavItem>
-                  </React.Fragment>
-                )}
+              <div className="ml-auto mr-4">
+                <Collapse navbar>
+                  <Nav navbar>
+                    <React.Fragment>
+                      <NavItem>
+                        <Link href="/">
+                          <NavLink className="custom_link">Home</NavLink>
+                        </Link>
+                      </NavItem>
+                      <NavItem>
+                        <Link href="/blogs">
+                          <NavLink className="custom_link">Blogs</NavLink>
+                        </Link>
+                      </NavItem>
+                      <NavItem>
+                        <Link href="/about">
+                          <NavLink className="custom_link">About</NavLink>
+                        </Link>
+                      </NavItem>
+                    </React.Fragment>
 
-                {isAuth() && isAuth().role === 0 && (
-                  <NavItem>
-                    <Link href="/user">
-                      <NavLink>{`${isAuth().name}'s Dashboard`}</NavLink>
-                    </Link>
-                  </NavItem>
-                )}
+                    {/* {!isAuth() && (
+                      <React.Fragment>
+                        <NavItem>
+                          <Link href="/signin">
+                            <NavLink>Signin</NavLink>
+                          </Link>
+                        </NavItem>
+                        <NavItem>
+                          <Link href="/signup">
+                            <NavLink>Signup</NavLink>
+                          </Link>
+                        </NavItem>
+                      </React.Fragment>
+                    )} */}
 
-                {isAuth() && isAuth().role === 1 && (
-                  <NavItem>
-                    <Link href="/admin">
-                      <NavLink>{`${isAuth().name}'s Dashboard`}</NavLink>
-                    </Link>
-                  </NavItem>
-                )}
+                    {isAuth() && isAuth().role === 0 && (
+                      <NavItem>
+                        <Link href="/user">
+                          <NavLink>{`${isAuth().name}'s Dashboard`}</NavLink>
+                        </Link>
+                      </NavItem>
+                    )}
 
-                {isAuth() && (
-                  <NavItem>
-                    <NavLink
-                      style={{ cursor: "pointer" }}
-                      onClick={() => signout(() => Router.replace(`/signin`))}
-                    >
-                      Signout
-                    </NavLink>
-                  </NavItem>
-                )}
+                    {isAuth() && isAuth().role === 1 && (
+                      <NavItem>
+                        <Link href="/admin">
+                          <NavLink>{`${isAuth().name}'s Dashboard`}</NavLink>
+                        </Link>
+                      </NavItem>
+                    )}
 
-                <NavItem>
-                  <Link href="/user/crud/blog">
-                    <NavLink className="btn btn-primary text-light">
-                      Write a blog
-                    </NavLink>
-                  </Link>
-                </NavItem>
-              </Nav>
-            </Collapse>
+                    {isAuth() && (
+                      <NavItem>
+                        <NavLink
+                          style={{ cursor: "pointer" }}
+                          onClick={() =>
+                            signout(() => Router.replace(`/signin`))
+                          }
+                        >
+                          Signout
+                        </NavLink>
+                      </NavItem>
+                    )}
+
+                    {isAuth() && (
+                      <NavItem>
+                        <Link href="/user/crud/blog">
+                          <NavLink className="btn btn-primary text-light">
+                            Write a blog
+                          </NavLink>
+                        </Link>
+                      </NavItem>
+                    )}
+                  </Nav>
+                </Collapse>
+              </div>
+            </Navbar>
           </div>
-        </Navbar>
+        </React.Fragment>
       </React.Fragment>
     );
   }

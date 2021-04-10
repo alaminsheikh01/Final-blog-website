@@ -2,11 +2,13 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from "../config";
 import React from "react";
+import Head from "next/head";
+import { withRouter } from "next/router";
 
-const Index = () => {
+const Index = ({ router }) => {
   const head = () => (
     <Head>
-      <title>Blog page | {APP_NAME}</title>
+      <title>Home page | {APP_NAME}</title>
       <meta
         name="description"
         content="Programming blogs and tutorials on react node next vue php laravel and web developoment"
@@ -38,7 +40,7 @@ const Index = () => {
   );
   return (
     <React.Fragment>
-      <head />
+      {head()}
       <Layout className="invert">
         <article className="overflow-hidden invert">
           <div className="container mb-5 mt-5">
@@ -154,4 +156,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default withRouter(Index);

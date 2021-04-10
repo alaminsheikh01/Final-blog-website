@@ -8,7 +8,7 @@ body {
   padding: 0;
 }
 .custom_title h1 {
-  /* padding-left: 8px; */
+  padding-left: 8px;
   color: #0a0a23;
 }
 .custom_search {
@@ -27,6 +27,12 @@ body {
   width: 100%;
   max-height: 500px;
   object-fit: cover;
+}
+
+.logo_custom {
+}
+.custom_link {
+  margin-left: 20px;
 }
 
 /* card design start */
@@ -212,10 +218,25 @@ a {
   text-align: left;
   margin-left: 3px;
 }
+.content_section {
+}
+.popular_custom {
+}
+
+/* sm mobile screen */
 @media (max-width: 575.98px) {
   .show_text {
     margin-top: -42px;
     margin-bottom: 22px;
+  }
+  .cus_footer_text span a {
+    padding: 6px;
+  }
+  .custom_auther_name {
+    font-size: 0.6rem;
+  }
+  .custom_title h1 {
+    font-size: 24px;
   }
 }
 
@@ -223,9 +244,35 @@ a {
   img {
     width: 100% !important;
   }
+  .content_section {
+    margin-top: 10px;
+  }
+  .popular_custom {
+    margin-top: 31px;
+  }
+  .lead {
+    font-size: 1rem !important;
+  }
+  .custom_auther_name {
+    font-size: 0.6rem;
+  }
 }
 
+/* md/ tablet screen */
 @media (max-width: 991.98px) {
+  .h1_card {
+    font-size: 1.1rem;
+    margin-bottom: 3px;
+  }
+  .content_custom {
+    font-size: 14px;
+  }
+  .custom_auther_name {
+    font-size: 0.6rem;
+  }
+  .custom_title h1 {
+    font-size: 26px;
+  }
 }
 
 @media (max-width: 1199.98px) {

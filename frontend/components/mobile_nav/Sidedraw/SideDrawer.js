@@ -1,5 +1,9 @@
 import React from "react";
 import "./SideDrawer.css";
+import { signout, isAuth } from "../../../actions/auth";
+import Link from "next/link";
+import Router from "next/router";
+import { NavItem, NavLink } from "reactstrap";
 
 const SideDrawer = (props) => {
   let drawerClasses = "side-drawer";
@@ -15,6 +19,25 @@ const SideDrawer = (props) => {
         <li>
           <a href="/">Users</a>
         </li>
+
+        {isAuth() && isAuth().role === 1 && (
+          <li>
+            <Link href="/admin">
+              <a>{`${isAuth().name}'s Dashboard`}</a>
+            </Link>
+          </li>
+        )}
+
+        {isAuth() && (
+          <li>
+            <a
+              style={{ cursor: "pointer" }}
+              onClick={() => signout(() => Router.replace(`/signin`))}
+            >
+              Signout
+            </a>
+          </li>
+        )}
       </ul>
     </div>
   );

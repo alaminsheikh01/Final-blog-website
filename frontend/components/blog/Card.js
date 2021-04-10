@@ -33,12 +33,12 @@ const Card = ({ blog }) => {
             </section>
           </div>
           <div className="col-md-8">
-            <section>
+            <section className="content_section">
               <h4 className="font-weight-bold h1_card">{blog.title}</h4>
               <div className="content_custom">{renderHTML(blog.excerpt)}</div>
               <div>
                 <section>
-                  <p className="mark lead custom_auther_name">
+                  <p className="mark custom_auther_name">
                     Written by{" "}
                     <Link href={`/profile/${blog.postedBy.username}`}>
                       <a className="username_custom">

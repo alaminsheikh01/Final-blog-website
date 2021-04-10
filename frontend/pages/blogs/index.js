@@ -145,7 +145,7 @@ const Blogs = ({
                 <div>{showLoadedBlogs()}</div>
               </div>
               <div className="col-md-4 text-center">
-                <h4 className=" mb-3">Popular Post</h4>
+                <h4 className=" mb-3 popular_custom">Popular Post</h4>
                 <PopularPost />
                 <h4 className="mt-4 mb-3">Top Categories</h4>
                 {showAllCategories()}
